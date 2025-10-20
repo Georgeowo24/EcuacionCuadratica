@@ -37,13 +37,7 @@
       padding: 25px 30px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
       margin-bottom: 30px;
-    }
-
-    .concepto:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     h2 {
@@ -166,10 +160,6 @@
     .incorrecto {
       color: #ff4f8b;
     }
-
-    * {
-      transition: color 0.2s ease, background-color 0.2s ease;
-    }
   </style>
 </head>
 <body>
@@ -191,10 +181,8 @@
       <li><strong>bx</strong>: es el término lineal (tiene exponente 1)</li>
       <li><strong>c</strong>: es el término independiente (no contiene la incógnita)</li>
     </ul>
-    <p>Los elementos que la componen son: incógnita (<strong>x</strong>), coeficientes (<strong>a, b, c</strong>) y términos.</p>
   </section>
 
-  <!-- Ejercicio con comparación -->
   <section class="ejercicio">
     <h2>Ejercicio interactivo</h2>
     <p>Genera una ecuación cuadrática aleatoria y trata de encontrar sus raíces reales.</p>
@@ -223,9 +211,9 @@
     let r1, r2;
 
     function generarEcuacion() {
-      a = Math.floor(Math.random() * 5) + 1;
-      b = Math.floor(Math.random() * 10) - 5;
-      c = Math.floor(Math.random() * 10) - 5;
+      a = Math.floor(Math.random() * 20) + 1;
+      b = Math.floor(Math.random() * 20) + 1;
+      c = Math.floor(Math.random() * 20) + 1;
 
       const discriminante = b ** 2 - 4 * a * c;
 
@@ -234,13 +222,13 @@
       document.getElementById('respuesta2').value = '';
 
       if (discriminante < 0) {
-        document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² ${b >= 0 ? '+ ' + b : '- ' + Math.abs(b)}x ${c >= 0 ? '+ ' + c : '- ' + Math.abs(c)} = 0`;
+        document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² + ${b}x + ${c} = 0`;
         document.getElementById('feedback').textContent = '⚠️ Esta ecuación no tiene raíces reales. Genera otra.';
         document.getElementById('inputs').style.display = 'none';
       } else {
         r1 = (-b + Math.sqrt(discriminante)) / (2 * a);
         r2 = (-b - Math.sqrt(discriminante)) / (2 * a);
-        document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² ${b >= 0 ? '+ ' + b : '- ' + Math.abs(b)}x ${c >= 0 ? '+ ' + c : '- ' + Math.abs(c)} = 0`;
+        document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² + ${b}x + ${c} = 0`;
         document.getElementById('inputs').style.display = 'block';
       }
     }
