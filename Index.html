@@ -6,13 +6,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-    main{
-        padding: 20px;
-        background-color: #f0f0f0;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
     body {
       font-family: 'Inter', Arial, sans-serif;
       background-color: #121212;
@@ -45,6 +38,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       transition: transform 0.2s ease, box-shadow 0.3s ease;
+      margin-bottom: 30px;
     }
 
     .concepto:hover {
@@ -55,6 +49,15 @@
     h2 {
       color: #ff4f8b;
       margin-top: 0;
+    }
+
+    blockquote {
+      font-style: italic;
+      background-color: rgba(255,255,255,0.05);
+      border-left: 4px solid #00aaff;
+      padding: 10px 15px;
+      margin: 15px 0;
+      color: #ccc;
     }
 
     .formula {
@@ -81,6 +84,89 @@
       color: #00aaff;
     }
 
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+    }
+
+    footer a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease, border-bottom 0.2s ease;
+    }
+
+    footer a:hover {
+      color: #00ffc8;
+      border-bottom: 1px solid #00ffc8;
+    }
+
+    /* Sección del ejercicio */
+    .ejercicio {
+      background: #1b1b1b;
+      padding: 25px 30px;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    .ejercicio button {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .ejercicio button:hover {
+      background-color: #00ffc8;
+      color: #121212;
+      transform: translateY(-2px);
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #ff4f8b;
+    }
+
+    input[type="number"] {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 8px;
+      border-radius: 6px;
+      width: 100px;
+      text-align: center;
+      margin: 5px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #00ffc8;
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    .correcto {
+      color: #00ffc8;
+    }
+
+    .incorrecto {
+      color: #ff4f8b;
+    }
+
     * {
       transition: color 0.2s ease, background-color 0.2s ease;
     }
@@ -94,7 +180,10 @@
 
   <section class="concepto">
     <center><h2>¿Qué es una ecuación cuadrática?</h2></center>
-    <p>Una <strong>ecuación cuadrática</strong> es una expresión algebraica de segundo grado que tiene la forma general:</p>
+    <blockquote>
+      Según Jiménez, Rodríguez y Estrada (2006, p. 152), una <strong>ecuación cuadrática</strong> 
+      es una expresión algebraica de segundo grado que tiene la forma general:
+    </blockquote>
     <p class="formula"><strong>ax² + bx + c = 0</strong></p>
     <p>Donde:</p>
     <ul>
@@ -104,5 +193,79 @@
     </ul>
     <p>Los elementos que la componen son: incógnita (<strong>x</strong>), coeficientes (<strong>a, b, c</strong>) y términos.</p>
   </section>
+
+  <!-- Ejercicio con comparación -->
+  <section class="ejercicio">
+    <h2>Ejercicio interactivo</h2>
+    <p>Genera una ecuación cuadrática aleatoria y trata de encontrar sus raíces reales.</p>
+    <button onclick="generarEcuacion()">Generar ecuación</button>
+    <div id="ecuacion" class="resultado"></div>
+
+    <div id="inputs" style="display:none;">
+      <p>Ingresa tus respuestas:</p>
+      <input type="number" step="0.01" id="respuesta1" placeholder="x₁">
+      <input type="number" step="0.01" id="respuesta2" placeholder="x₂">
+      <br>
+      <button onclick="verificarRespuestas()">Comprobar</button>
+      <div id="feedback" class="feedback"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Referencia:</p>
+    <a href="https://www.google.com.mx/books/edition/Matematicas_1_SEP/n-Ebosd6UZEC?hl=es&gbpv=1&dq=ecuaci%C3%B3n+cuadr%C3%A1tica&pg=PA152&printsec=frontcover" target="_blank">
+      Jiménez, R., Rodríguez, L. & Estrada, A. (2006). <em>Matemáticas 1</em>. SEP, p.152.
+    </a>
+  </footer>
+
+  <script>
+    let a, b, c;
+    let r1, r2;
+
+    function generarEcuacion() {
+      a = Math.floor(Math.random() * 5) + 1;
+      b = Math.floor(Math.random() * 10) - 5;
+      c = Math.floor(Math.random() * 10) - 5;
+
+      const discriminante = b ** 2 - 4 * a * c;
+
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('respuesta1').value = '';
+      document.getElementById('respuesta2').value = '';
+
+      if (discriminante < 0) {
+        document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² ${b >= 0 ? '+ ' + b : '- ' + Math.abs(b)}x ${c >= 0 ? '+ ' + c : '- ' + Math.abs(c)} = 0`;
+        document.getElementById('feedback').textContent = '⚠️ Esta ecuación no tiene raíces reales. Genera otra.';
+        document.getElementById('inputs').style.display = 'none';
+      } else {
+        r1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+        r2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+        document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² ${b >= 0 ? '+ ' + b : '- ' + Math.abs(b)}x ${c >= 0 ? '+ ' + c : '- ' + Math.abs(c)} = 0`;
+        document.getElementById('inputs').style.display = 'block';
+      }
+    }
+
+    function verificarRespuestas() {
+      const x1 = parseFloat(document.getElementById('respuesta1').value);
+      const x2 = parseFloat(document.getElementById('respuesta2').value);
+
+      if (isNaN(x1) || isNaN(x2)) {
+        document.getElementById('feedback').innerHTML = '<span class="incorrecto">❌ Ingresa ambos valores antes de comprobar.</span>';
+        return;
+      }
+
+      const precision = 0.1; // margen de error aceptado
+      const correctas = (
+        (Math.abs(x1 - r1) < precision && Math.abs(x2 - r2) < precision) ||
+        (Math.abs(x1 - r2) < precision && Math.abs(x2 - r1) < precision)
+      );
+
+      if (correctas) {
+        document.getElementById('feedback').innerHTML = '<span class="correcto">✅ ¡Correcto! Muy bien hecho.</span>';
+      } else {
+        document.getElementById('feedback').innerHTML = `<span class="incorrecto">❌ Incorrecto. Las soluciones correctas son:<br>x₁ = ${r1.toFixed(2)}, x₂ = ${r2.toFixed(2)}</span>`;
+      }
+    }
+  </script>
 </body>
 </html>
