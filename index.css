@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #121212;
+    color: #e5e5e5;
+    margin: 40px auto;
+    max-width: 800px;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #00aaff;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #aaa;
+    font-size: 0.95em;
+}
+
+.concepto, .ejercicio, .seccion-pruebas {
+    background: #1e1e1e;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #ff4f8b;
+    margin-top: 0;
+}
+
+blockquote {
+    font-style: italic;
+    background-color: rgba(255,255,255,0.05);
+    border-left: 4px solid #00aaff;
+    padding: 10px 15px;
+    margin: 15px 0;
+    color: #ccc;
+}
+
+.formula {
+    font-size: 1.3em;
+    color: #00ffc8;
+    margin: 25px 0;
+    text-align: center;
+    background-color: rgba(255,255,255,0.05);
+    padding: 10px 15px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+strong {
+    color: #00aaff;
+}
+
+footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #999;
+}
+
+footer a {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+footer a:hover {
+    color: #00ffc8;
+    border-bottom: 1px solid #00ffc8;
+}
+
+.ejercicio button, .seccion-pruebas button {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.ejercicio button:hover, .seccion-pruebas button:hover {
+    background-color: #00ffc8;
+    color: #121212;
+    transform: translateY(-2px);
+}
+
+.seccion-pruebas button {
+    background-color: #ff4f8b;
+}
+.seccion-pruebas button:hover {
+    background-color: #e04279;
+    color: white;
+}
+
+
+.resultado {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #ff4f8b;
+}
+
+input[type="number"] {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 6px;
+    width: 100px;
+    text-align: center;
+    margin: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #00ffc8;
+}
+
+.feedback {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.correcto { color: #00ffc8; }
+.incorrecto { color: #ff4f8b; }
+
+/* Estilos para la sección de pruebas */
+#test-results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #222;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.8;
+}
+.test-pass { color: #28a745; }
+.test-fail { color: #dc3545; }
+.test-info { color: #17a2b8; }

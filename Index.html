@@ -2,165 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Lección: Ecuación Cuadrática</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      background-color: #121212;
-      color: #e5e5e5;
-      margin: 40px auto;
-      max-width: 800px;
-      line-height: 1.6;
-      padding: 0 20px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    h1 {
-      font-size: 2em;
-      color: #00aaff;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: #aaa;
-      font-size: 0.95em;
-    }
-
-    .concepto {
-      background: #1e1e1e;
-      padding: 25px 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      color: #ff4f8b;
-      margin-top: 0;
-    }
-
-    blockquote {
-      font-style: italic;
-      background-color: rgba(255,255,255,0.05);
-      border-left: 4px solid #00aaff;
-      padding: 10px 15px;
-      margin: 15px 0;
-      color: #ccc;
-    }
-
-    .formula {
-      font-size: 1.3em;
-      color: #00ffc8;
-      margin: 25px 0;
-      text-align: center;
-      background-color: rgba(255,255,255,0.05);
-      padding: 10px 15px;
-      border-radius: 8px;
-      letter-spacing: 1px;
-    }
-
-    ul {
-      margin-top: 15px;
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    strong {
-      color: #00aaff;
-    }
-
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #999;
-    }
-
-    footer a {
-      color: #00aaff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s ease, border-bottom 0.2s ease;
-    }
-
-    footer a:hover {
-      color: #00ffc8;
-      border-bottom: 1px solid #00ffc8;
-    }
-
-    /* Sección del ejercicio */
-    .ejercicio {
-      background: #1b1b1b;
-      padding: 25px 30px;
-      border-radius: 10px;
-      margin-top: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      text-align: center;
-    }
-
-    .ejercicio button {
-      background-color: #00aaff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .ejercicio button:hover {
-      background-color: #00ffc8;
-      color: #121212;
-      transform: translateY(-2px);
-    }
-
-    .resultado {
-      margin-top: 20px;
-      font-size: 1.1em;
-      color: #ff4f8b;
-    }
-
-    input[type="number"] {
-      background-color: #222;
-      color: #fff;
-      border: 1px solid #333;
-      padding: 8px;
-      border-radius: 6px;
-      width: 100px;
-      text-align: center;
-      margin: 5px;
-      transition: border-color 0.3s ease;
-    }
-
-    input[type="number"]:focus {
-      outline: none;
-      border-color: #00ffc8;
-    }
-
-    .feedback {
-      margin-top: 15px;
-      font-weight: 600;
-      font-size: 1.1em;
-    }
-
-    .correcto {
-      color: #00ffc8;
-    }
-
-    .incorrecto {
-      color: #ff4f8b;
-    }
-  </style>
+  <title>Lección: Ecuación Cuadrática con Pruebas</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <header>
@@ -199,6 +42,15 @@
     </div>
   </section>
 
+  <!-- SECCIÓN DE PRUEBAS AUTOMATIZADAS -->
+  <section class="seccion-pruebas">
+    <h2>Panel de Pruebas</h2>
+    <p>Ejecuta pruebas automatizadas para verificar la funcionalidad y el rendimiento de la aplicación.</p>
+    <button onclick="ejecutarTodasLasPruebas()">Correr Pruebas</button>
+    <div id="test-results">Los resultados de las pruebas aparecerán aquí...</div>
+  </section>
+
+
   <footer>
     <p>Referencia:</p>
     <a href="https://www.google.com.mx/books/edition/Matematicas_1_SEP/n-Ebosd6UZEC?hl=es&gbpv=1&dq=ecuaci%C3%B3n+cuadr%C3%A1tica&pg=PA152&printsec=frontcover" target="_blank">
@@ -207,6 +59,7 @@
   </footer>
 
   <script>
+    // --- LÓGICA ORIGINAL DE LA APLICACIÓN ---
     let a, b, c;
     let r1, r2;
 
@@ -225,11 +78,13 @@
         document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² + ${b}x + ${c} = 0`;
         document.getElementById('feedback').textContent = '⚠️ Esta ecuación no tiene raíces reales. Genera otra.';
         document.getElementById('inputs').style.display = 'none';
+        return false; // Indica que no hay raíces reales
       } else {
         r1 = (-b + Math.sqrt(discriminante)) / (2 * a);
         r2 = (-b - Math.sqrt(discriminante)) / (2 * a);
         document.getElementById('ecuacion').textContent = `Ecuación generada: ${a}x² + ${b}x + ${c} = 0`;
         document.getElementById('inputs').style.display = 'block';
+        return true; // Indica que sí hay raíces reales
       }
     }
 
@@ -253,6 +108,102 @@
       } else {
         document.getElementById('feedback').innerHTML = `<span class="incorrecto">❌ Incorrecto. Las soluciones correctas son:<br>x₁ = ${r1.toFixed(2)}, x₂ = ${r2.toFixed(2)}</span>`;
       }
+    }
+
+
+    const resultsContainer = document.getElementById('test-results');
+
+    // Funcion para registrar los resultados de pruebas
+    function logTestResult(message, status) {
+      const p = document.createElement('p');
+      p.textContent = message;
+      p.className = status === 'pass' ? 'test-pass' : (status === 'fail' ? 'test-fail' : 'test-info');
+      resultsContainer.appendChild(p);
+    }
+    
+
+    //<!--? Prueba de Unitaria -->
+    function pruebaUnitaria_VerificacionCorrecta() {
+      logTestResult('--- Iniciando Prueba Unitaria ---', 'info');
+      // Preparación
+      r1 = 2;
+      r2 = 3;
+      document.getElementById('respuesta1').value = '3.05'; 
+      document.getElementById('respuesta2').value = '1.95'; 
+
+      // Ejecución 
+      verificarRespuestas();
+
+      // Verificación 
+      const feedback = document.getElementById('feedback').innerHTML;
+      if (feedback.includes('¡Correcto!')) {
+        logTestResult('PASS: La función de verificación aceptó respuestas correctas (con precisión).', 'pass');
+      } else {
+        logTestResult('FAIL: La función de verificación no aceptó las respuestas correctas.', 'fail');
+      }
+    }
+
+    //<!--? Prueba de Integración -->
+    function pruebaDeIntegracion_FlujoCompleto() {
+        logTestResult('--- Iniciando Prueba de Integración ---', 'info');
+        // Generar una ecuación
+        let tieneRaicesReales = false;
+        let intentos = 0;
+
+        // Generamos una ecuación con raíces reales para probar el flujo
+        while(!tieneRaicesReales && intentos < 10) {
+          tieneRaicesReales = generarEcuacion();
+          intentos++;
+        }
+
+        if (!tieneRaicesReales) {
+          logTestResult('FAIL: No se pudo generar una ecuación con raíces reales para la prueba.', 'fail');
+          return;
+        }
+
+        logTestResult('INFO: Ecuación con raíces reales generada exitosamente.', 'info');
+
+        // Introducir las respuestas correctas
+        document.getElementById('respuesta1').value = r1;
+        document.getElementById('respuesta2').value = r2;
+        
+        // Comprobamos las respuestas
+        verificarRespuestas();
+
+        // Verificamos el resultado
+        const feedback = document.getElementById('feedback').innerHTML;
+        if (feedback.includes('¡Correcto!')) {
+          logTestResult('PASS: El flujo completo (Generar -> Resolver -> Verificar) funciona.', 'pass');
+        } else {
+          logTestResult('FAIL: El flujo completo falló en la verificación.', 'fail');
+        }
+    }
+
+    //<!--? Prueba de Rendimiento -->
+    function pruebaDeRendimiento_GeneracionMasiva() {
+      logTestResult('--- Iniciando Prueba de Rendimiento ---', 'info');
+      const numIteraciones = 10000;
+      const startTime = performance.now();
+
+      for (let i = 0; i < numIteraciones; i++) {
+        generarEcuacion();
+      }
+
+      const endTime = performance.now();
+      const totalTime = endTime - startTime;
+
+      logTestResult(`PASS: Se generaron ${numIteraciones} ecuaciones en ${totalTime.toFixed(2)} ms.`, 'pass');
+      logTestResult(`INFO: Tiempo promedio por generación: ${(totalTime / numIteraciones).toFixed(4)} ms.`, 'info');
+    }
+
+    // <!--! Función para ejecutar todas las pruebas secuencialmente -->
+    function ejecutarTodasLasPruebas() {
+      resultsContainer.innerHTML = ''; // Limpiar resultados anteriores
+      
+      // Retrasaso para la actualización del DOM sea visible
+      setTimeout(() => pruebaUnitaria_VerificacionCorrecta(), 100);
+      setTimeout(() => pruebaDeIntegracion_FlujoCompleto(), 200);
+      setTimeout(() => pruebaDeRendimiento_GeneracionMasiva(), 300);
     }
   </script>
 </body>
