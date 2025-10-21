@@ -3,6 +3,13 @@
 - *Jorge Torres Romero*
 - *Cristian Hernández Bonilla*
 - *Víctor Mejía Rosas*
+
+## *Caso de Prueba*
+Se realizarán las pruebas sobre un proyecto de una página donde se enseña que es una ecuación cuadrática y comó resolverla. <br>
+![InicioPagina](/img/Inicio.png)
+<br>
+A continuación se muestra el ejercicio usado de ejemplo usado en la web <br>
+![Ejercicio](/img/Ejercicio.png)
 ## Prueba Unitaria
 ***Objetivo:*** Verificar que la lógica de verificarRespuestas funciona correctamente de forma aislada con un caso conocido. <br>
 ***Escenario:*** Para la ecuación *x² - 5x + 6 = 0*, las raíces son *2* y *3*.
@@ -88,3 +95,6 @@ function pruebaDeRendimiento_GeneracionMasiva() {
   logTestResult(INFO: Tiempo promedio por generación: ${(totalTime / numIteraciones).toFixed(4)} ms., 'info');
 }
 ```
+## Resultados Obtenidos
+A continuación se muestran los resultados obtenidos en las pruebas:
+![ResultadosPruebas](/img/Pruebas.png)
